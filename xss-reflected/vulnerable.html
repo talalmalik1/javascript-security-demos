@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reflected Cross-Site Scripting</title>
+</head>
+<body>
+    <h3>Welcome, <span id="output"></span></h3>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        document.getElementById("output").innerHTML = name; //allows users to inject potentially malicious scripts
+    </script>
+</body>
+</html>
